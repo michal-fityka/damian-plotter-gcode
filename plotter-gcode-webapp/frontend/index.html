@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plotter G-code Generator</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Plotter G-code Generator</h1>
+
+      <section class="panel">
+        <div class="tabs">
+          <button class="tab active" data-tab="upload">Wgraj obraz</button>
+          <button class="tab" data-tab="draw">Rysuj ręcznie</button>
+        </div>
+
+        <div id="upload-tab" class="tab-content active">
+          <input type="file" id="fileInput" accept="image/png,image/jpeg" />
+          <img id="imagePreview" alt="Podgląd obrazu" />
+        </div>
+
+        <div id="draw-tab" class="tab-content">
+          <canvas id="drawCanvas" width="800" height="500"></canvas>
+          <div class="draw-actions">
+            <button id="clearCanvasBtn" type="button">Wyczyść</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel form-grid">
+        <label>
+          Szerokość wyjścia (mm)
+          <input type="number" id="outputWidthMm" value="180" step="1" />
+        </label>
+        <label>
+          Feed rate
+          <input type="number" id="feedRate" value="2500" step="100" />
+        </label>
+        <label>
+          Threshold
+          <input type="number" id="threshold" value="170" step="1" min="0" max="255" />
+        </label>
+        <label>
+          Min component area
+          <input type="number" id="minComponentArea" value="30" step="1" />
+        </label>
+        <label>
+          Potrace turdsize
+          <input type="number" id="potraceTurdsize" value="4" step="1" />
+        </label>
+        <label>
+          RDP epsilon
+          <input type="number" id="rdpEpsilon" value="1.5" step="0.1" />
+        </label>
+        <label>
+          Min path length (px)
+          <input type="number" id="minPathLength" value="15" step="1" />
+        </label>
+        <label>
+          Pen up command
+          <input type="text" id="penUpCmd" value="M5" />
+        </label>
+        <label>
+          Pen down command
+          <input type="text" id="penDownCmd" value="M3 S1000" />
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="adaptiveThreshold" />
+          Adaptive threshold
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="flipY" checked />
+          Flip Y
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="generateBtn" type="button">Generuj G-code</button>
+        <button id="simulateBtn" type="button">Symuluj ostatni G-code</button>
+      </section>
+
+      <section class="panel status-panel">
+        <div id="status">Gotowe.</div>
+        <pre id="metaBox"></pre>
+      </section>
+
+      <section class="panel simulator-panel">
+        <h2>Symulator plotera</h2>
+        <div class="simulator-actions">
+          <button id="simPlayBtn" type="button">Start</button>
+          <button id="simPauseBtn" type="button">Pauza</button>
+          <button id="simResetBtn" type="button">Reset</button>
+          <label>
+            Prędkość podglądu
+            <input type="range" id="simSpeed" min="1" max="20" value="6" />
+          </label>
+        </div>
+        <canvas id="simCanvas" width="900" height="550"></canvas>
+        <div id="simInfo">Brak danych do symulacji.</div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

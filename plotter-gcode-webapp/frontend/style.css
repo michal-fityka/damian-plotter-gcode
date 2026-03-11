@@ -1,0 +1,158 @@
+:root {
+  color-scheme: dark;
+  --bg: #171717;
+  --panel: #222;
+  --text: #f5f5f5;
+  --muted: #b7b7b7;
+  --accent: #4caf50;
+  --accent-2: #2f80ed;
+  --danger: #cc3d3d;
+  --border: #3a3a3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab,
+button {
+  background: #2d2d2d;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--accent-2);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+#imagePreview {
+  display: none;
+  margin-top: 12px;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+#drawCanvas,
+#simCanvas {
+  width: 100%;
+  max-width: 100%;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  touch-action: none;
+}
+
+.draw-actions,
+.actions,
+.simulator-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#generateBtn,
+#simPlayBtn {
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+}
+
+#clearCanvasBtn {
+  background: var(--danger);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  background: #111;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-top: 28px;
+}
+
+.status-panel {
+  min-height: 120px;
+}
+
+#status {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#metaBox {
+  white-space: pre-wrap;
+  color: var(--muted);
+  margin: 0;
+}
+
+#simInfo {
+  margin-top: 10px;
+  color: var(--muted);
+}
